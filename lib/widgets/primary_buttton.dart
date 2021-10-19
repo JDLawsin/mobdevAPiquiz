@@ -5,8 +5,12 @@ class PrimaryButton extends StatelessWidget {
   final IconData? iconData;
   final Function onPress;
 
-  PrimaryButton(
-      {required this.text, @required this.iconData, required this.onPress});
+  const PrimaryButton(
+      {Key? key,
+      required this.text,
+      @required this.iconData,
+      required this.onPress})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

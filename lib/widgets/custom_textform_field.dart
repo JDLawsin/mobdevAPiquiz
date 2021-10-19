@@ -4,21 +4,26 @@ class CustomTextFormField extends StatelessWidget {
   final String? labelText;
   final String? hintText;
   final IconData? iconData;
-  final TextEditingController? textEditingController;
+  final TextEditingController textEditingController;
   final TextInputType? textInputType;
+  final String? Function(String?)? validation;
 
-  CustomTextFormField(
-      {@required this.labelText,
+  const CustomTextFormField(
+      {Key? key,
+      @required this.labelText,
       @required this.hintText,
       @required this.iconData,
-      @required this.textEditingController,
-      @required this.textInputType});
+      required this.textEditingController,
+      @required this.textInputType,
+      @required this.validation})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: textEditingController,
       keyboardType: textInputType,
+      validator: validation,
       decoration: InputDecoration(
         prefixIcon: Container(
           padding: const EdgeInsets.symmetric(horizontal: 15.0),

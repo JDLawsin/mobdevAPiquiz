@@ -7,19 +7,24 @@ class PasswordField extends StatelessWidget {
   final TextEditingController? textEditingController;
   final bool obscureText;
   final Function onTap;
+  final String? Function(String?)? validation;
 
-  PasswordField(
-      {required this.labelText,
+  const PasswordField(
+      {Key? key,
+      required this.labelText,
       required this.hintText,
       required this.iconData,
       this.textEditingController,
       required this.obscureText,
-      required this.onTap});
+      required this.onTap,
+      required this.validation})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: textEditingController,
       obscureText: obscureText,
+      validator: validation,
       decoration: InputDecoration(
         prefixIcon: Container(
           padding: const EdgeInsets.symmetric(horizontal: 15.0),
